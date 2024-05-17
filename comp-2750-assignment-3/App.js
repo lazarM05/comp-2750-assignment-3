@@ -87,7 +87,7 @@ const charToIntForPicker3 = parseInt(lastChar2); // Convert concatenated string 
 
 <Text style={styles.heading}>{calculatedValue}</Text>
 
-<Text style={styles.footer}>App developed by</Text>
+<Text style={styles.footer}>App developed by Lazar, Alanah and Reba</Text>
 
   </SafeAreaView>
   );}
