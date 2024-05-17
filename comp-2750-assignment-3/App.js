@@ -37,7 +37,7 @@ export default function App() {
 <View style={styles.row2}>
 <Picker style={styles.fruit_picker} selectedValue={selectedFruit} onValueChange={(itemValue, itemIndex) => setSelectedFruit(itemValue)}>
  <Picker.Item label="Strawberries: $11" value="11"/>
- <Picker.Item label="Apple: $12" value="14"/>
+ <Picker.Item label="Apple: $12" value="12"/>
  <Picker.Item label="Banana: $13" value="13"/>
  <Picker.Item label="Pear: $10" value="10"/>
  <Picker.Item label="Blueberries: $12" value="12"/>
@@ -53,7 +53,7 @@ export default function App() {
 
 <Button title= "Calculate!" style={styles.button} onPress={() => {
 
-  const charToIntForPicker1 = parseInt(selectedVeggie);
+ const charToIntForPicker1 = parseInt(selectedVeggie);
  const charToIntForPicker2 = parseInt(veggieQuantity);
  const charToIntForPicker3 = parseInt(selectedFruit);
  const charToIntForPicker4 = parseInt(fruitQuantity);
