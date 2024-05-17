@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 
 export default function App() {
 
- const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
+const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
  const [veggieQuantity, setVeggieQuantity] = useState("1");
  const [selectedFruit, setSelectedFruit] = useState("Strawberries: $11");
  const [fruitQuantity, setFruitQuantity] = useState("1");
@@ -37,7 +37,7 @@ export default function App() {
 <View style={styles.row2}>
 <Picker style={styles.fruit_picker} selectedValue={selectedFruit} onValueChange={(itemValue, itemIndex) => setSelectedFruit(itemValue)}>
  <Picker.Item label="Strawberries: $11" value="11"/>
- <Picker.Item label="Apple: $12" value="12"/>
+ <Picker.Item label="Apple: $12" value="14"/>
  <Picker.Item label="Banana: $13" value="13"/>
  <Picker.Item label="Pear: $10" value="10"/>
  <Picker.Item label="Blueberries: $12" value="12"/>
@@ -53,16 +53,34 @@ export default function App() {
 
 <Button title= "Calculate!" style={styles.button} onPress={() => {
 
-const lastChar = selectedVeggie[selectedVeggie.length - 1];
-const charToIntForPicker1 = parseInt(lastChar);
+ const isInteger = (value) => {
+  return !isNaN(parseInt(value)) && isFinite(parseInt(value));
+ };
 
-const charToIntForPicker2 = parseInt(veggieQuantity);
+ // Assuming isInteger function is defined elsewhere as per previous examples
 
-const lastChar2 = selectedFruit[selectedFruit.length - 1];
-const charToIntForPicker3 = parseInt(lastChar2);
+// For selectedVeggie
+let lastChar = selectedVeggie[selectedVeggie.length - 1];
+let prevLastChar = selectedVeggie[selectedVeggie.length - 2];
 
-const charToIntForPicker4 = parseInt(fruitQuantity);
- 
+if (isInteger(prevLastChar)) {
+  lastChar = prevLastChar.concat(lastChar); // Concatenate prevLastChar with lastChar
+}
+
+const charToIntForPicker1 = parseInt(lastChar); // Convert concatenated string to integer
+const charToIntForPicker2 = parseInt(veggieQuantity); // Assuming veggieQuantity is defined elsewhere
+
+// For selectedFruit
+let lastChar2 = selectedFruit[selectedFruit.length - 1];
+let prevLastChar2 = selectedFruit[selectedFruit.length - 2];
+
+if (isInteger(prevLastChar2)) {
+  lastChar2 = prevLastChar2.concat(lastChar2); // Concatenate prevLastChar2 with lastChar2
+}
+
+const charToIntForPicker3 = parseInt(lastChar2); // Convert concatenated string to integer
+
+ const charToIntForPicker4 = parseInt(fruitQuantity);
  setCalculatedValue("Total cost of Order: $" + ((charToIntForPicker1 * charToIntForPicker2) + (charToIntForPicker3 * charToIntForPicker4)));
  }}
 />
