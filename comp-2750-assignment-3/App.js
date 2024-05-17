@@ -52,12 +52,13 @@ const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
 </View>
 
 <Button title= "Calculate!" style={styles.button} onPress={() => {
- 
- const charToIntForPicker1 = parseInt(selectedVeggie);
- const charToIntForPicker2 = parseInt(veggieQuantity);
- const charToIntForPicker3 = parseInt(selectedFruit);
- const charToIntForPicker4 = parseInt(fruitQuantity);
- 
+
+  
+const charToIntForPicker1 = parseInt(selectedVeggie);
+const charToIntForPicker2 = parseInt(veggieQuantity);
+const charToIntForPicker3 = parseInt(selectedFruit);
+const charToIntForPicker4 = parseInt(fruitQuantity);
+
  setCalculatedValue("Total cost of Order: $" + ((charToIntForPicker1 * charToIntForPicker2) + (charToIntForPicker3 * charToIntForPicker4)));
  }}
 />
