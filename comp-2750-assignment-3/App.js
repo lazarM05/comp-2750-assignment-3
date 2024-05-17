@@ -86,6 +86,9 @@ const charToIntForPicker3 = parseInt(lastChar2); // Convert concatenated string 
 />
 
 <Text style={styles.heading}>{calculatedValue}</Text>
+
+<Text style={styles.footer}>App developed by</Text>
+
   </SafeAreaView>
   );}
 
@@ -181,7 +184,12 @@ const charToIntForPicker3 = parseInt(lastChar2); // Convert concatenated string 
       textAlign: 'center',
     },
 
-
+    footer: {
+      position: 'absolute',
+      marginTop: 60,
+      bottom: 0,
+      fontFamily: 'Monospace',
+    }
 
   });
 
