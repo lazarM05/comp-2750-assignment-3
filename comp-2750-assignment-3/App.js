@@ -6,24 +6,26 @@ export default function App() {
 
 const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
  const [veggieQuantity, setVeggieQuantity] = useState("1");
- const [selectedFruit, setSelectedFruit] = useState("Strawberries: $4");
+ const [selectedFruit, setSelectedFruit] = useState("Strawberries: $11");
  const [fruitQuantity, setFruitQuantity] = useState("1");
 
  const [calculatedValue, setCalculatedValue] = useState("Press the above button to calculate");
 
   return (
   <SafeAreaView style={styles.container}>
-    <h1 style = {styles.h1}>Welcome to POGS!  </h1>
-    <img src='https://upload.wikimedia.org/wikipedia/commons/3/34/Veggies%21_%2846409018742%29.jpg'></img>
+    <Text style = {styles.h1}> Welcome to POGS! </Text>
+    <Image 
+    style={styles.image}
+    source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Veggies%21_%2846409018742%29.jpg'}}/>
     <View style={styles.row1}>
-<Picker style={styles.veggie_picker} selectedValue={selectedVeggie} onValueChange={(itemValue,itemIndex) => setPicker1SelectedValue(itemValue)}>
+<Picker style={styles.veggie_picker} selectedValue={selectedVeggie} onValueChange={(itemValue,itemIndex) => setSelectedVeggie(itemValue)}>
  <Picker.Item label="Potato: $5" value="5"/>
  <Picker.Item label="Carrot: $8" value="8"/>
  <Picker.Item label="Onion: $3" value="3"/> 
  <Picker.Item label="Broccoli: $7" value="7"/>
- <Picker.Item label="Tomato: $9" value="9"/>
+ <Picker.Item label="Tomato: $8" value="8"/>
  </Picker>
-<Picker style={styles.veggie_quantity} selectedValue={veggieQuantity} onValueChange={(itemValue, itemIndex) => setPicker1SelectedValue(itemValue)}>
+<Picker style={styles.veggie_quantity} selectedValue={veggieQuantity} onValueChange={(itemValue, itemIndex) => setVeggieQuantity(itemValue)}>
  <Picker.Item label="1" value="1"/>
  <Picker.Item label="2" value="2" />
  <Picker.Item label="3" value="3" />
@@ -33,14 +35,14 @@ const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
 </View>
 
 <View style={styles.row2}>
-<Picker style={styles.fruit_picker} selectedValue={selectedFruit} onValueChange={(itemValue, itemIndex) => setPicker1SelectedValue(itemValue)}>
- <Picker.Item label="Strawberries: $4" value="4"/>
- <Picker.Item label="Apple: $2" value="2"/>
- <Picker.Item label="Banana: $5" value="5"/>
- <Picker.Item label="Pear: $3" value="3"/>
+<Picker style={styles.fruit_picker} selectedValue={selectedFruit} onValueChange={(itemValue, itemIndex) => setSelectedFruit(itemValue)}>
+ <Picker.Item label="Strawberries: $11" value="11"/>
+ <Picker.Item label="Apple: $12" value="14"/>
+ <Picker.Item label="Banana: $13" value="13"/>
+ <Picker.Item label="Pear: $10" value="10"/>
  <Picker.Item label="Blueberries: $12" value="12"/>
 </Picker>
-<Picker style={styles.fruit_quantity} selectedValue={fruitQuantity} onValueChange={(itemValue, itemIndex) => setPicker1SelectedValue(itemValue)}>
+<Picker style={styles.fruit_quantity} selectedValue={fruitQuantity} onValueChange={(itemValue, itemIndex) => setFruitQuantity(itemValue)}>
  <Picker.Item label="1" value="1"/>
  <Picker.Item label="2" value="2" />
  <Picker.Item label="3" value="3" />
@@ -49,7 +51,7 @@ const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
 </Picker>
 </View>
 
-<button style={styles.button} onPress={() => {
+<Button title= "Calculate!" style={styles.button} onPress={() => {
  const lastChar = selectedVeggie[selectedVeggie.length - 1];
  const charToIntForPicker1 = parseInt(lastChar);
 
@@ -59,11 +61,11 @@ const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
  const charToIntForPicker3 = parseInt(lastChar2);
 
  const charToIntForPicker4 = parseInt(fruitQuantity);
- setCalculatedValue((charToIntForPicker1 * charToIntForPicker2) + (charToIntForPicker3 * charToIntForPicker4));
+ setCalculatedValue("Total cost of Order: $" + ((charToIntForPicker1 * charToIntForPicker2) + (charToIntForPicker3 * charToIntForPicker4)));
  }}
-> Calculate!</button>
+/>
 
-<Text style={styles.heading}>Total cost of Order: {setCalculatedValue} </Text>
+<Text style={styles.heading}>{calculatedValue}</Text>
   </SafeAreaView>
   );}
 
@@ -78,6 +80,14 @@ const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
       textAlign: 'center',
       fontFamily: 'Monospace',
       fontSize:35,
+      marginTop: 20,
+      marginBottom: 20,
+    },
+
+    image: {
+      width: '100%',
+      height: 200,
+      marginBottom: 20,
     },
 
     row1: {
@@ -134,12 +144,12 @@ const [selectedVeggie, setSelectedVeggie] = useState("Potato: $5");
 
     button: {
       alignSelf: 'center',
-      marginTop: 20,
+      marginTop: 40,
       borderRadius: 10,
-      
-      backgroundColor: '#00cc00',
+
+      color: '#00cc00',
       width: 200,
-      height: 50,
+      height: 100,
       fontSize: 25,
       borderStyle: 'none',
       fontFamily: 'Monospace',
