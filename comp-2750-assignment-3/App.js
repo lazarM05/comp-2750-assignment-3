@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {SafeAreaView, StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import {SafeAreaView, StyleSheet, View, ScrollView, Text, Image, TouchableOpacity} from 'react-native';
 import {Picker} from '@react-native-picker/picker'; 
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
   const [calculatedValue, setCalculatedValue] = useState("Press the above button to calculate");
 
   return (
+    <ScrollView>
     <SafeAreaView style={styles.container}>
       <Text style = {styles.h1}> Welcome to POGS! </Text>
       <Image 
@@ -20,6 +21,7 @@ export default function App() {
       />
       <View style={styles.row1}>
         <Picker 
+          
           style={styles.veggie_picker} 
           selectedValue={selectedVeggie} 
           onValueChange={(itemValue, itemIndex) => setSelectedVeggie(itemValue)}
@@ -108,6 +110,7 @@ export default function App() {
 
       <Text style={styles.footer}>App developed by Lazar, Alanah and Reba</Text>
     </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -149,7 +152,6 @@ const styles = StyleSheet.create({
     flex: 2,
     fontFamily: 'Monospace',
     backgroundColor: '#e6e6fa',
-    height: 40,
     marginRight: 10,
     marginLeft: 10,
     borderRadius: 5,
@@ -159,7 +161,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: 'Monospace',
     backgroundColor: '#e6e6fa',
-    height: 40,
     marginRight: 10,
     borderRadius: 5,
   },
@@ -168,7 +169,6 @@ const styles = StyleSheet.create({
     flex: 2,
     fontFamily: 'Monospace',
     backgroundColor: '#e6e6fa',
-    height: 40,
     marginRight: 10,
     marginLeft: 10,
     borderRadius: 5,
@@ -178,7 +178,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: 'Monospace',
     backgroundColor: '#e6e6fa',
-    height: 40,
     marginRight: 10,
     borderRadius: 5,
   },
